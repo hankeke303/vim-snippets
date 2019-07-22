@@ -108,3 +108,34 @@ ${1:ReturnType} ${2:FunctionName}(${3:param})
 }
 endsnippet
 # vim:ft=snippets:
+
+
+
+
+# Myself:
+
+
+snippet header "header"
+#include<bits/stdc++.h>
+
+#define fec(i, x, y) (int i = head[x], y = g[i].to; i; i = g[i].ne, y = g[i].to)
+#define dbg(...) fprintf(stderr, __VA_ARGS__)
+#define File(x) freopen(#x".in", "r", stdin), freopen(#x".out", "w", stdout)
+#define fi first
+#define se second
+#define pb push_back
+
+template<typename A, typename B> inline char smax(A &a, const B &b) {return a < b ? a = b , 1 : 0;}
+template<typename A, typename B> inline char smin(A &a, const B &b) {return b < a ? a = b , 1 : 0;}
+
+typedef long long ll; typedef unsigned long long ull; typedef std::pair<int, int> pii;
+
+template<typename I>
+inline void read(I &x) {
+	int f = 0, c;
+	while (!isdigit(c = getchar())) c == '-' ? f = 1 : 0;
+	x = c & 15;
+	while (isdigit(c = getchar())) x = (x << 1) + (x << 3) + (c & 15);
+	f ? x = -x : 0;
+}
+endsnippet
