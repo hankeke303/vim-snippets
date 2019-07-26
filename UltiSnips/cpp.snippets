@@ -140,7 +140,7 @@ inline void read(I &x) {
 }
 endsnippet
 
-snippet hkk_main "hkk_main"
+snippet hkk_main "hkk_main" bA
 int main() {
 #ifdef hzhkk
 	freopen("hkk.in", "r", stdin);
@@ -151,12 +151,13 @@ int main() {
 }
 endsnippet
 
-snippet hkk_file "hkk_fike"
+snippet hkk_file "hkk_fike" bA
 int main() {
 #ifdef hzhkk
 	freopen("hkk.in", "r", stdin);
 #else
-	File($1)
+	File(${1:a});
+#endif
 	$0
 	fclose(stdin), fclose(stdout);
 	return 0;
