@@ -139,3 +139,26 @@ inline void read(I &x) {
 	f ? x = -x : 0;
 }
 endsnippet
+
+snippet hkk_main "hkk_main"
+int main() {
+#ifdef hzhkk
+	freopen("hkk.in", "r", stdin);
+#endif
+	$0
+	fclose(stdin), fclose(stdout);
+	return 0;
+}
+endsnippet
+
+snippet hkk_file "hkk_fike"
+int main() {
+#ifdef hzhkk
+	freopen("hkk.in", "r", stdin);
+#else
+	File($1)
+	$0
+	fclose(stdin), fclose(stdout);
+	return 0;
+}
+endsnippet
