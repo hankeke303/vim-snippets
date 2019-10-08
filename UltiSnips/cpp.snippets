@@ -130,8 +130,7 @@ template<typename A, typename B> inline char smin(A &a, const B &b) {return b < 
 
 typedef long long ll; typedef unsigned long long ull; typedef std::pair<int, int> pii;
 
-template<typename I>
-inline void read(I &x) {
+template<typename I> inline void read(I &x) {
 	int f = 0, c;
 	while (!isdigit(c = getchar())) c == '-' ? f = 1 : 0;
 	x = c & 15;
@@ -161,5 +160,40 @@ int main() {
 	$0
 	fclose(stdin), fclose(stdout);
 	return 0;
+}
+endsnippet
+
+snippet Graph_without_weight "Graph_without_weight" bA
+struct Edge { int to, ne; } g[${2:M}]; int head[${1:N}], tot;
+inline void addedge(int x, int y) { g[++tot].to = y, g[tot].ne = head[x], head[x] = tot; }
+inline void adde(int x, int y) { addedge(x, y), addedge(y, x); }
+endsnippet
+
+snippet Graph_with_weight "Graph_with_weight" bA
+struct Edge { int to, ne, w; } g[${2:M}]; int head[${1:N}], tot;
+inline void addedge(int x, int y, int z) { g[++tot].to = y, g[tot].w = z, g[tot].ne = head[x], head[x] = tot; }
+inline void adde(int x, int y, int z) { addedge(x, y, z), addedge(y, x, z); }
+endsnippet
+
+snippet do_mod "do_mod" bA
+inline int smod(int x) { return x >= P ? x - P : x; }
+inline void sadd(int &x, const int &y) { x += y; x >= P ? x -= P : x; }
+inline int fpow(int x, int y) {
+	int ans = 1;
+	for (; y; y >>= 1, x = (ll)x * x % P) if (y & 1) ans = (ll)ans * x % P;
+	return ans;
+}
+endsnippet
+
+snippet do_combine "do_combine" bA
+int fac[N], inv[N], ifac[N];
+inline void ycl(const int &n = ::n) {
+	fac[0] = 1; for (int i = 1; i <= n; ++i) fac[i] = (ll)fac[i - 1] * i % P;
+	inv[1] = 1; for (int i = 2; i <= n; ++i) inv[i] = (ll)(P - P / i) * inv[P % i] % P;
+	ifac[0] = 1; for (int i = 1; i <= n; ++i) ifac[i] = (ll)ifac[i - 1] * inv[i] % P;
+}
+inline int C(int x, int y) {
+	if (x < y) return 0;
+	return (ll)fac[x] * ifac[y] % P * ifac[x - y] % P;
 }
 endsnippet
