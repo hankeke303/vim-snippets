@@ -125,8 +125,8 @@ snippet header "header" bA
 #define se second
 #define pb push_back
 
-template<typename A, typename B> inline char smax(A &a, const B &b) {return a < b ? a = b , 1 : 0;}
-template<typename A, typename B> inline char smin(A &a, const B &b) {return b < a ? a = b , 1 : 0;}
+template<typename A, typename B> inline bool smax(A &a, const B &b) {return a < b ? a = b , 1 : 0;}
+template<typename A, typename B> inline bool smin(A &a, const B &b) {return b < a ? a = b , 1 : 0;}
 
 typedef long long ll; typedef unsigned long long ull; typedef std::pair<int, int> pii;
 
